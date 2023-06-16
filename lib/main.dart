@@ -2,11 +2,12 @@ import 'package:blocdocplay/myquizapp/quizapp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'acontainerplay/app.dart';
+import 'acontainerplay/bloc/acontainerbloc.dart';
 import 'counterexample/counterbloc.dart';
 import 'counterexample/counterexample.dart';
 import 'execisecounter/colorcontainer.dart';
 import 'execisecounter/exercise.dart';
-import 'timerappexample/timer/view/timer_page.dart';
 
 void main() {
   runApp(const Learning());
@@ -66,12 +67,14 @@ class Homepage extends StatelessWidget {
           ),
           ListTile(
             titleAlignment: ListTileTitleAlignment.center,
-            title: const Text("Timer app "),
+            title: const Text("Quizcontianer app "),
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) {
-                  return const TimerPage();
+                  return BlocProvider(
+                      create: (_) => ContainerBloc(),
+                      child: const AcontainerQuiz());
                 }),
               );
             },
