@@ -22,10 +22,11 @@ class AcontainerQuiz extends StatelessWidget {
             ...List.generate(
               5,
               (index) => InkWell(
-                onTap: () {
+                onTap: () async {
                   context
                       .read<ContainerBloc>()
                       .add(Optionclicked(selectedoption: index));
+                  await Future.delayed(Duration.zero);
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(20),
