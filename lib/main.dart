@@ -81,18 +81,13 @@ class Homepage extends StatelessWidget {
           ),
           ListTile(
             titleAlignment: ListTileTitleAlignment.center,
-            title: const Text("Quiz app "),
+            title: const Text("Infinite list"),
             onTap: () {
+              Bloc.observer = const SimpleBlocObserver();
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) {
-                  return QuizScreen(
-                    question: QuizQuestion(
-                      question: 'What is the capital of France?',
-                      options: ['London', 'Paris', 'Berlin', 'Madrid'],
-                      correctOptionIndex: 1,
-                    ),
-                  );
+                  return (const App());
                 }),
               );
             },

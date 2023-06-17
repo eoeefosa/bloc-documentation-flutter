@@ -61,7 +61,7 @@ class PostBloc extends Bloc<PostEvent, PostState> {
 
   Future<List<Post>> _fetchPosts([int startIndex = 0]) async {
     final response = await httpClient.get(
-      Uri.http(
+      Uri.https(
         'jsonplaceholder.typicode.com',
         '/posts',
         <String, String>{'_start': '$startIndex', '_limit': '$_postLimit'},
@@ -77,8 +77,7 @@ class PostBloc extends Bloc<PostEvent, PostState> {
           body: map['body'] as String,
         );
       }).toList();
-
-      throw Exception('error fetching posts');
     }
+    throw Exception('error fetching posts');
   }
 }
