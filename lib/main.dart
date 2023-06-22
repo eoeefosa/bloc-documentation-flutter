@@ -1,4 +1,3 @@
-import 'package:blocdocplay/myquizapp/quizapp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -8,6 +7,8 @@ import 'counterexample/counterbloc.dart';
 import 'counterexample/counterexample.dart';
 import 'execisecounter/colorcontainer.dart';
 import 'execisecounter/exercise.dart';
+import 'flutter_infinite_list/app.dart';
+import 'flutter_infinite_list/simple_bloc_observer.dart';
 
 void main() {
   runApp(const Learning());

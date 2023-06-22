@@ -41,7 +41,7 @@ class PostBloc extends Bloc<PostEvent, PostState> {
         return emit(
           state.copyWith(
             status: PostStatus.success,
-            post: posts,
+            posts: posts,
             hasReachedMax: false,
           ),
         );
@@ -51,7 +51,7 @@ class PostBloc extends Bloc<PostEvent, PostState> {
           ? state.copyWith(hasReachedMax: true)
           : state.copyWith(
               status: PostStatus.success,
-              post: List.of(state.posts)..addAll(posts),
+              posts: List.of(state.posts)..addAll(posts),
               hasReachedMax: false,
             ));
     } catch (_) {
