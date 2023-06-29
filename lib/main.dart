@@ -1,3 +1,4 @@
+import 'package:blocdocplay/puredart/readandwrite.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -76,6 +77,18 @@ class Homepage extends StatelessWidget {
                   return BlocProvider(
                       create: (_) => ContainerBloc(),
                       child: const AcontainerQuiz());
+                }),
+              );
+            },
+          ),
+          ListTile(
+            titleAlignment: ListTileTitleAlignment.center,
+            title: const Text("Email form"),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) {
+                  return (const SignForm());
                 }),
               );
             },
