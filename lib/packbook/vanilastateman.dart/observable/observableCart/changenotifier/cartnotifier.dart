@@ -10,6 +10,20 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   CartNotifier cartNotifier = CartNotifier();
   @override
+  void initState() {
+    super.initState();
+    cartNotifier.addListener(() {
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    cartNotifier.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container();
   }
@@ -25,8 +39,88 @@ class CartPage extends StatefulWidget {
 
 class _CartPageState extends State<CartPage> {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    widget.cartNotifier.addListener(_updateCart);
+  }
+
+  @override
+  void dispose() {
+    widget.cartNotifier.removeListener(_updateCart);
+    super.dispose();
+  }
+
+  void _updateCart() {
+    setState(() {});
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Container();
+    // return ListView.builder(itemBuilder: (context, index) {
+    // return CartListItemView(
+    //   item: item,
+    //   onRemoveFromCart: widget.cartNotifier.removeFromCart,
+    //   onAddToCart: (item)=>widget.cartNotifier.addToCart(item.product),
+    // );
+    // });
+
+    // or
+    return ListenableBuilder(
+        listenable: widget.cartNotifier,
+        builder: (context, _) {
+          return Stack(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(bottom: 60),
+                child: ListView.builder(
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    itemCount: widget.cartNotifier.items.length,
+                    itemBuilder: (context, index) {
+                      final item = widget.cartNotifier.items[index];
+                      return CartListItemView(
+                          item: item, cartNotifier: widget.cartNotifier);
+                    }),
+              ),
+            ],
+          );
+        });
+  }
+}
+
+// class CartListItemView extends StatelessWidget {
+//   final CartListItem item;
+//   final onRemoveFromCart;
+//   final onAddToCart;
+
+//   const CartListItemView({
+//     super.key,
+//     required this.item,
+//     required this.onRemoveFromCart,
+//     required this.onAddToCart,
+//   });
+
+//   @override
+//   Widget build(BuildContext context) {
+//     // TODO: implement build
+//     throw UnimplementedError();
+//   }
+// }
+
+class CartListItemView extends StatelessWidget {
+  final CartListItem item;
+  final CartNotifier cartNotifier;
+
+  const CartListItemView({
+    super.key,
+    required this.item,
+    required this.cartNotifier,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    throw UnimplementedError();
   }
 }
 
