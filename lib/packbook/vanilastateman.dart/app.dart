@@ -40,11 +40,12 @@ class Cartpage extends StatefulWidget {
   final Function(CartListItem) onRemoveFromCart;
   final Function(CartListItem) onAddToCart;
 
-  const Cartpage(
-      {super.key,
-      required this.items,
-      required this.onRemoveFromCart,
-      required this.onAddToCart});
+  const Cartpage({
+    super.key,
+    required this.items,
+    required this.onRemoveFromCart,
+    required this.onAddToCart,
+  });
 
   @override
   State<Cartpage> createState() => _CartpageState();

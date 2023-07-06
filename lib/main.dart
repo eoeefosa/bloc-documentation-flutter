@@ -10,6 +10,7 @@ import 'execisecounter/colorcontainer.dart';
 import 'execisecounter/exercise.dart';
 import 'flutter_infinite_list/app.dart';
 import 'flutter_infinite_list/simple_bloc_observer.dart';
+import 'login/authentication/authentication.dart';
 
 void main() {
   runApp(const Learning());
@@ -102,6 +103,20 @@ class Homepage extends StatelessWidget {
                 context,
                 MaterialPageRoute(builder: (context) {
                   return (const App());
+                }),
+              );
+            },
+          ),
+
+          // BlocAuthapp
+          ListTile(
+            titleAlignment: ListTileTitleAlignment.center,
+            title: const Text("BlocAuthapp"),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) {
+                  return (const BlocAuthapp());
                 }),
               );
             },
